@@ -1,20 +1,28 @@
-Gem::Specification.new do |s|
-  s.name     = "lruhash"
-  s.version  = "1.0"
-  s.date     = "2009-04-11"
-  s.summary  = "A hash class with LRU semantics"
-  s.email    = "oldmoe@gmail.com"
-  s.homepage = "http://github.com/oldmoe/lrudhash"
-  s.description = "A hash class that is limited in size and discards old entries based on LRU"
-  s.has_rdoc = true
-  s.authors  = ["Muhammad A. Ali"]
-  s.platform = Gem::Platform::RUBY
-  s.files    = [ 
-		"lruhash.gemspec", 
-		"README",
-		"lib/lruhash.rb"
-	]
-  s.rdoc_options = ["--main", "README"]
-  s.extra_rdoc_files = ["README"]
+require File.expand_path('../lib/lruhash/version', __FILE__)
+
+Gem::Specification.new do |gem|
+  gem.name     = "lruhash"
+  gem.version  = "1.0"
+  gem.date     = "2009-04-11"
+  gem.summary  = "A hash class with LRU semantics"
+  gem.homepage = "http://github.com/invoca/lrudhash"
+  gem.description = "A hash class that is limited in size and discards old entries based on LRU - forked from http://github.com/oldmoe/lrudhash"
+
+  gem.authors  = ["Bob Smith"]
+  gem.email    = "bob@invoca.com"
+  gem.platform = Gem::Platform::RUBY
+
+  gem.files         = `git ls-files`.split($\)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/.*\.rb})
+
+  gem.rdoc_options = ["--main", "README"]
+  gem.extra_rdoc_files = ["README"]
+
+  gem.add_development_dependency 'minitest' # Included in Ruby 1.9, but we want the latest.
+  gem.add_development_dependency 'rake', '>=0.9'
+  gem.add_development_dependency 'rubocop'
+  gem.add_development_dependency 'pry'
+
 end
 

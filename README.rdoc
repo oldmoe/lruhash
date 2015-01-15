@@ -1,0 +1,54 @@
+= LRUHash
+
+This is a hash class that holds a maximum number of elements.  If adding an element causes the hash to grow over this size, the least recently used element is removed. Elements in the hash are maintained in LRU order.
+
+Useful for implementing in-process caches where memory growth control is desired.
+
+
+Example:
+
+  myhash = LRUHash.new
+  myhash.max = 2
+
+  myhash[1] = 1
+  myhash[2] = 2
+
+  myhash.length # => 2
+
+  myhash[3] = 3
+
+  myhash.length # => 2
+
+  myhash[1] # => nil
+
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+  gem 'lruhash'
+
+And then execute:
+
+  $ bundle
+
+Or install it yourself as:
+
+  $ gem install lruhash
+
+== Usage
+
+  require 'lruhash'
+
+
+== Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+
+== Credit
+This was forked from [here](http://github.com/oldmoe/lrudhash) and modernized.  Thanks to oldmoe for the first version.

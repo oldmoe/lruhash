@@ -1,0 +1,26 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+    - 'lib/**/*'
+
+# other configuration
+# ...
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EndOfLine:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
