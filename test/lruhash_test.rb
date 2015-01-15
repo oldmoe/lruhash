@@ -82,15 +82,12 @@ describe 'LRUHash' do
         @hash.max = iterations
 
         @hash["first"] = "initial element"
-
         assert_equal "initial element", @hash["first"]
 
         keys.each { |k| @hash[k.to_s] = "=#{k}" }
-
         assert_equal "initial element", @hash["first"]
 
         keys.each { |k| @hash[k.to_s] }
-
         @hash["last"] = "push the first out!"
 
         assert_equal nil, @hash["first"]
