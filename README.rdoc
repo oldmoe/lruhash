@@ -51,4 +51,4 @@ Or install it yourself as:
 
 
 == Credit
-This was forked from [here](http://github.com/oldmoe/lrudhash) and modernized.  Thanks to oldmoe for the first version.
+This was forked from http://github.com/oldmoe/lrudhash and modernized.  Thanks to oldmoe for the first version.
