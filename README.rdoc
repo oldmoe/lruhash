@@ -10,16 +10,16 @@ Example:
   myhash = LRUHash.new
   myhash.max = 2
 
-  myhash[1] = 1
-  myhash[2] = 2
+  myhash['a'] = 'apples'
+  myhash['b'] = 'banana'
 
   myhash.length # => 2
 
-  myhash[3] = 3
+  myhash['c'] = 'cookie'
 
   myhash.length # => 2
 
-  myhash[1] # => nil
+  myhash['a'] # => nil
 
 
 == Installation

@@ -1,11 +1,10 @@
 class LRUHash < Hash
-  def max
-    @max ||= 256
+  def initialize(max:)
+    @max = max
   end
 
-  def max=(value)
-    @max = value
-    shift while length > @max
+  def max
+    @max ||= 256
   end
 
   def store(key, value)
@@ -30,6 +29,7 @@ class LRUHash < Hash
 
   def [](key)
     if (value = super(key))
+      # We delete and add here to put the entry back on the front of the LRU list.
       delete(key)
       self[key] = value
     end

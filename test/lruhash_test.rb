@@ -6,17 +6,25 @@ require 'minitest/autorun'
 
 describe 'LRUHash' do
   describe "An lru hash" do
-    before do
-      @hash = LRUHash.new
-      @hash.max = 2
+    describe "constructor" do
+      it "should require max" do
+        assert_raises(ArgumentError) { LRUHash.new }
+      end
+
+      it "should allow the max value to be specified" do
+        @hash = LRUHash.new(max: 42)
+        assert_equal 42, @hash.max
+      end
     end
 
     it "should allow simple insertion" do
+      @hash = LRUHash.new(max: 2)
       @hash["1"] = 1
       assert_equal 1, @hash["1"]
     end
 
     it "should throw out the least recently written element" do
+      @hash = LRUHash.new(max: 2)
       @hash["1"] = 1
       @hash["2"] = 2
       @hash["3"] = 3
@@ -27,6 +35,7 @@ describe 'LRUHash' do
     end
 
     it "should throw out the least recently read item" do
+      @hash = LRUHash.new(max: 2)
       @hash["1"] = 1
       @hash["2"] = 2
 
@@ -40,6 +49,7 @@ describe 'LRUHash' do
     end
 
     it "should expire old items when store is called" do
+      @hash = LRUHash.new(max: 2)
       @hash["1"] = 1
       @hash["2"] = 2
 
@@ -52,6 +62,7 @@ describe 'LRUHash' do
 
     describe "fetch" do
       it "fetch should update the recently read list if the element is found" do
+        @hash = LRUHash.new(max: 2)
         @hash["1"] = 1
         @hash["2"] = 2
 
@@ -65,11 +76,13 @@ describe 'LRUHash' do
       end
 
       it "should allow fetch with a default.  Does not store if used." do
+        @hash = LRUHash.new(max: 2)
         assert_equal 42, @hash.fetch('2', 42)
         assert_equal nil, @hash['2']
       end
 
       it "should allow fetch with a block.  Does not store if used." do
+        @hash = LRUHash.new(max: 2)
         assert_equal 42, @hash.fetch('2') { 42 }
         assert_equal nil, @hash['2']
       end
@@ -78,8 +91,8 @@ describe 'LRUHash' do
     describe "scaling" do
       it "should work with a large number of items" do
         iterations = 10_000
+        @hash = LRUHash.new(max: iterations)
         keys = (0..iterations - 2).to_a.shuffle
-        @hash.max = iterations
 
         @hash["first"] = "initial element"
         assert_equal "initial element", @hash["first"]
