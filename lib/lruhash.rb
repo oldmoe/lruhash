@@ -1,10 +1,8 @@
 class LRUHash < Hash
-  def initialize(max:)
-    @max = max
-  end
+  attr_reader :max
 
-  def max
-    @max ||= 256
+  def initialize(max: 256)
+    @max = max
   end
 
   def store(key, value)

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lruhash (1.0.1)
+    lruhash (1.0.2)
 
 GEM
   remote: https://rubygems.org/

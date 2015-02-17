@@ -7,8 +7,9 @@ require 'minitest/autorun'
 describe 'LRUHash' do
   describe "An lru hash" do
     describe "constructor" do
-      it "should require max" do
-        assert_raises(ArgumentError) { LRUHash.new }
+      it "should default to 256" do
+        @hash = LRUHash.new
+        assert_equal 256, @hash.max
       end
 
       it "should allow the max value to be specified" do
