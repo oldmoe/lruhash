@@ -2,7 +2,7 @@ require File.expand_path('../lib/lruhash/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name     = "lruhash"
-  gem.version  = "1.1"
+  gem.version  = "1.0.1"
   gem.date     = "2009-04-11"
   gem.summary  = "A hash class with LRU semantics"
   gem.homepage = "http://github.com/invoca/lrudhash"
