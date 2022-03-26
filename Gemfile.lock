@@ -39,3 +39,6 @@ DEPENDENCIES
   pry
   rake (>= 0.9)
   rubocop
+
+BUNDLED WITH
+   2.2.29
